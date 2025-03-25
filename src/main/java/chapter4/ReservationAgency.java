@@ -9,8 +9,8 @@ public class ReservationAgency {
         for (DiscountCondition condition : movie.getDiscountConditions()) {
             if (condition.getType() == DiscountConditionType.PERIOD) {
                 discountable = screening.getWhenScreened().getDayOfWeek().equals(condition.getDayOfWeek()) &&
-                        condition.getStartTime().compareTo(screening.getWhenScreened().toLocalTime()) <= 0 &&
-                        condition.getEndTime().compareTo(screening.getWhenScreened().toLocalTime()) >= 0;
+                        !condition.getStartTime().isAfter(screening.getWhenScreened().toLocalTime()) &&
+                        !condition.getEndTime().isBefore(screening.getWhenScreened().toLocalTime());
             }
             else {
                 discountable = condition.getSequence() == screening.getSequence();
