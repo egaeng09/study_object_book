@@ -8,9 +8,9 @@ public class Screening {
     private LocalDateTime whenScreened;
 
     public Screening(Movie movie, int sequence, LocalDateTime whenScreened) {
-        this.movie =movie;
-        this.sequence =sequence;
-        this.whenScreened =whenScreened;
+        this.movie = movie;
+        this.sequence = sequence;
+        this.whenScreened = whenScreened;
     }
 
     public Movie getMovie() {
