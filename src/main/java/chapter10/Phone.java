@@ -20,21 +20,23 @@ public class Phone {
     private Money reqularAmount;
     private Duration seconds;
     private List<Call> calls;
+    private double taxRate;
 
-    public Phone(Money amount, Duration seconds) {
-        this(PhoneType.REGULAR, amount, Money.ZERO, Money.ZERO, seconds);
+    public Phone(Money amount, Duration seconds, double taxRate) {
+        this(PhoneType.REGULAR, amount, Money.ZERO, Money.ZERO, seconds, taxRate);
     }
 
-    public Phone(Money nightlyAmount, Money reqularAmount, Duration seconds) {
-        this(PhoneType.REGULAR, Money.ZERO, nightlyAmount, reqularAmount, seconds);
+    public Phone(Money nightlyAmount, Money reqularAmount, Duration seconds, double taxRate) {
+        this(PhoneType.REGULAR, Money.ZERO, nightlyAmount, reqularAmount, seconds, taxRate);
     }
 
-    public Phone(PhoneType type, Money amount, Money nightlyAmount, Money reqularAmount, Duration seconds) {
+    public Phone(PhoneType type, Money amount, Money nightlyAmount, Money reqularAmount, Duration seconds, double taxRate) {
         this.type = type;
         this.amount = amount;
         this.nightlyAmount = nightlyAmount;
         this.reqularAmount = reqularAmount;
         this.seconds = seconds;
+        this.taxRate = taxRate;
         this.calls = new ArrayList<>();
     }
 
@@ -52,6 +54,10 @@ public class Phone {
 
     public Duration getSeconds() {
         return seconds;
+    }
+
+    public double getTaxRate() {
+        return taxRate;
     }
 
     public Money calculateFee() {
@@ -74,6 +80,6 @@ public class Phone {
             }
 
         }
-        return result;
+        return result.plus(result.times(taxRate));
     }
 }

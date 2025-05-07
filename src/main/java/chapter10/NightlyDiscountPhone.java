@@ -4,8 +4,8 @@ import chapter4.Money;
 import java.time.Duration;
 
 public class NightlyDiscountPhone extends Phone {
-    public NightlyDiscountPhone(Money nightlyAmount, Money reqularAmount, Duration seconds) {
-        super(nightlyAmount, reqularAmount, seconds);
+    public NightlyDiscountPhone(Money nightlyAmount, Money reqularAmount, Duration seconds, double taxRate) {
+        super(nightlyAmount, reqularAmount, seconds, taxRate);
     }
 
     @Override
@@ -22,6 +22,6 @@ public class NightlyDiscountPhone extends Phone {
                 );
             }
         }
-        return result.minus(nightlyAmount);
+        return result.minus(nightlyAmount.plus(nightlyAmount.times(getTaxRate())));
     }
 }
