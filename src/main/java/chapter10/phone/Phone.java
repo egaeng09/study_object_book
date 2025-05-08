@@ -6,9 +6,11 @@ import java.util.List;
 
 public abstract class Phone {
     private List<Call> calls;
+    private double taxRate;
 
-    public Phone() {
+    public Phone(double taxRate) {
         this.calls = new ArrayList<>();
+        this.taxRate = taxRate;
     }
 
     public Money calculateFee() {
@@ -18,7 +20,7 @@ public abstract class Phone {
             result = result.plus(calculateCallFee(call));
         }
 
-        return result;
+        return result.plus(result.times(taxRate));
     }
 
     abstract protected Money calculateCallFee(Call call);
@@ -30,5 +32,9 @@ public abstract class Phone {
 
     public List<Call> getCalls() {
         return calls;
+    }
+
+    public double getTaxRate() {
+        return taxRate;
     }
 }
