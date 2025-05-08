@@ -3,25 +3,24 @@ package chapter10;
 import chapter4.Money;
 import java.time.Duration;
 
-public class NightlyDiscountPhone extends Phone {
-    public NightlyDiscountPhone(Money nightlyAmount, Money reqularAmount, Duration seconds, double taxRate) {
-        super(nightlyAmount, reqularAmount, seconds, taxRate);
+public class NightlyDiscountPhone extends AbstractPhone {
+    private static final int LATE_NIGHT_HOUR = 22;
+
+    private Money nightlyAmount;
+    private Money regularAmount;
+    private Duration seconds;
+
+    public NightlyDiscountPhone(Money nightlyAmount, Money regularAmount, Duration seconds) {
+        this.nightlyAmount = nightlyAmount;
+        this.regularAmount = regularAmount;
+        this.seconds = seconds;
     }
 
     @Override
-    public Money calculateFee() {
-        Money result = super.calculateFee();
-
-        Money nightlyAmount = Money.ZERO;
-
-        for (Call call : getCalls()) {
-            if (call.getFrom().getHour() >= LATE_NIGHT_HOUR) {
-                nightlyAmount = nightlyAmount.plus(
-                        getAmount().minus(nightlyAmount)
-                                .times((double) call.getDuration().getSeconds() / getSeconds().getSeconds())
-                );
-            }
-        }
-        return result.minus(nightlyAmount.plus(nightlyAmount.times(getTaxRate())));
+    protected Money calculateCallFee(Call call) {
+       if (call.getFrom().getHour() >= LATE_NIGHT_HOUR) {
+           return nightlyAmount.times((double) call.getDuration().getSeconds() / seconds.getSeconds());
+       }
+       return regularAmount.times((double) call.getDuration().getSeconds() / seconds.getSeconds());
     }
 }
