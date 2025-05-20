@@ -23,6 +23,9 @@ public abstract class Phone {
 
     abstract protected Money calculateCallFee(Call call);
 
+    protected Money afterCalculated(Money fee) {
+        return fee;
+    }
 
     public void call(Call call) {
         calls.add(call);
