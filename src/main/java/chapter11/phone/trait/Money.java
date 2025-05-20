@@ -1,4 +1,4 @@
-package phone;
+package chapter11.phone.trait;
 
 import java.math.BigDecimal;
 

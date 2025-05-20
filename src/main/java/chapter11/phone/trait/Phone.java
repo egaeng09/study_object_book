@@ -1,4 +1,4 @@
-package phone;
+package chapter11.phone.trait;
 
 import java.util.ArrayList;
 import java.util.List;

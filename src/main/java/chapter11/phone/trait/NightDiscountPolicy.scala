@@ -1,7 +1,5 @@
 package phone
 
-import scala.concurrent.duration.Duration
-
 class NightDiscountPolicy(
                            val nightlyAmount: Money,
                            val regularAmount: Money,
