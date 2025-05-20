@@ -1,5 +1,6 @@
-package chapter11.phone;
+package chapter11.phone.inheritance;
 
+import chapter11.phone.Call;
 import chapter4.Money;
 import java.time.Duration;
 
