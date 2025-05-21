@@ -28,5 +28,19 @@ public class Application {
         );
 
         System.out.println(lecture2.evaluate());
+
+        Professor professor = new Professor(
+                "siso",
+                lecture
+        );
+
+        System.out.println(professor.compileStatistics());
+
+        Professor professor2 = new Professor(
+                "s1s0",
+                lecture2
+        );
+
+        System.out.println(professor2.compileStatistics());
     }
 }

@@ -36,12 +36,12 @@ public class GradeLecture extends Lecture {
 
     private String gradesStatistics() {
         return grades.stream()
-                .map(grade -> format(grade))
+                .map(this::format)
                 .collect(joining(" "));
     }
 
     private String format(Grade grade) {
-        return String.format("%s: %d", grade.getName(), gradeCount(grade));
+        return String.format("%s: %d ", grade.getName(), gradeCount(grade));
     }
 
     private long gradeCount(Grade grade) {
