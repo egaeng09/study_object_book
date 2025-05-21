@@ -13,7 +13,7 @@ public class Application {
 
         System.out.println(lecture.evaluate());
 
-
+        // TODO: MEMO -> Upcasting
         Lecture lecture2 = new GradeLecture(
                 "Java Programming with Grades",
                 70,
@@ -42,5 +42,8 @@ public class Application {
         );
 
         System.out.println(professor2.compileStatistics());
+
+        // TODO: MEMO -> Downcasting
+        GradeLecture downcastedLecture = (GradeLecture) lecture2;
     }
 }
