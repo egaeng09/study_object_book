@@ -1,8 +1,5 @@
 package chapter13.phone;
 
-import chapter11.phone.Call;
-import chapter11.phone.composition.Phone;
-import chapter11.phone.composition.RatePolicy;
 import chapter4.Money;
 
 public abstract class BasicRatePolicy implements RatePolicy {
