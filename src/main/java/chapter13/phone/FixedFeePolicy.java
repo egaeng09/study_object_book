@@ -1,7 +1,5 @@
 package chapter13.phone;
 
-import chapter11.phone.Call;
-import chapter11.phone.composition.BasicRatePolicy;
 import chapter4.Money;
 import java.time.Duration;
 
